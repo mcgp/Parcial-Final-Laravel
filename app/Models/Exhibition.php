@@ -19,7 +19,12 @@ class Exhibition extends Model
         'especie',
         'capacidad_maxima',
         'fecha_exhibicion',
-        'tipo_exhibicion',
+        'categoty_id',
         'costo_entrada',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

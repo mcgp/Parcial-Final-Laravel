@@ -22,12 +22,13 @@ return new class extends Migration
             $table->string('especie'); // especie que participa
             $table->integer('capacidad_maxima');
             $table->date('fecha_exhibicion');
-            $table->string('tipo_exhibicion'); // Educativa, Interactiva, Tematica
+            $table->string('category_id'); // Educativa, Interactiva, Tematica
             $table->decimal('costo_entrada', 8, 2);
             $table->timestamps();
         });
     }
 
+    
     /**
      * Reverse the migrations.
      */
@@ -36,3 +37,22 @@ return new class extends Migration
         Schema::dropIfExists('exhibiciones');
     }
 };
+
+class AddCategoryIdToExhibitionsTable extends Migration
+{
+    public function up()
+    {
+        Schema::table('exhibiciones', function (Blueprint $table) {
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories');
+        });
+    }
+
+    public function down()
+    {
+        Schema::table('exhibiciones', function (Blueprint $table) {
+            $table->dropForeign(['category_id']);
+            $table->dropColumn('category_id');
+        });
+    }
+}

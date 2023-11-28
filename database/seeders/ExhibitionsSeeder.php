@@ -14,7 +14,7 @@ class ExhibitionsSeeder extends Seeder
     public function run(): void
     {
         //
-        Exhibition::factory()->count(10)->create();
+        #Exhibition::factory()->count(10)->create();
 
         
     }

@@ -60,11 +60,12 @@ class ExhibitionController extends Controller
      */
     public function show($id)
     {
-        //
-        $exhibicion = Exhibition::findOrFail($id);
+        $exhibicion = Exhibition::with('category')->find($id);
+    
         if (is_null($exhibicion)) {
             return response()->json(['error' => 'Exhibición no encontrada'], 404);
         }
+    
         return response()->json($exhibicion);
     }
 

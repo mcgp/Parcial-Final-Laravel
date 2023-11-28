@@ -45,7 +45,7 @@ class ExhibitionFactory extends Factory
                'Koala', 'Canguro']),
             'capacidad_maxima' => $this->faker->numberBetween(50, 200),
             'fecha_exhibicion' => $this->faker->date(),
-            'tipo_exhibicion' => $this->faker->randomElement(['Educativa', 'Interactiva', 'Tematica']),
+            'category_id' => $this->faker->numberBetween(1, 3),
             'costo_entrada' => $this->faker->randomFloat(2, 10, 100),
         ];
     }
